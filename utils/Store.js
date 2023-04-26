@@ -1,5 +1,5 @@
 import { createContext, useReducer } from 'react';
-import Cookies from 'js-cookie';
+import Cookies from 'js-cookies';
 
 export const Store = createContext();
 
@@ -34,6 +34,15 @@ function reducer(state, action) {
       Cookies.set('cart', JSON.stringify({ ...state.cart, cartItems }));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
+    case 'CART_RESET':
+      return {
+        ...state,
+        cart: {
+          cartItems: [],
+          shippingAddress: {location: {}},
+          paymentMethod: '',
+        },
+      }
     default:
       return state;
   }
