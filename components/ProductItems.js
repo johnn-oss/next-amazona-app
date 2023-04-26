@@ -20,7 +20,7 @@ export default function ProductItems({product}) {
         </Link>
         <p className="mb-2">{product.brand}</p>
         <p>&#8358;{product.price}</p>
-        <button className="primary-button" type="buttion">
+        <button className="primary-button" type="button">
           Add to Cart
         </button>
       </div>
