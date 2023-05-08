@@ -4,13 +4,13 @@ const conection = {};
 
 async function connect() {
   if (connection.isConnected) {
-    console.log('alresdy connected');
+    console.log('already connected');
     return;
   }
   if (mongoose.connection.length > 0) {
     connection.isConnected = mongoose.connections[0].readyState;
     if (connection.isConnected === 1) {
-      console.log('use lprevious connection');
+      console.log('use previous connection');
       return;
     }
     await mongoose.disconnect();
