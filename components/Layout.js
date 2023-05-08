@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Store } from '@/utils/Store';
-import { ToastContainer } from 'react-toast';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { signOut, useSession } from 'next-auth/react';
 import { Menu } from '@headlessui/react';
 import DropdownLink from './DropdownLink';
-import Cookies from 'js-cookies';
+import Cookies from 'js-cookie';
 
 export default function Layout({ title, children }) {
   const { status, data: session } = useSession();
@@ -54,7 +54,7 @@ export default function Layout({ title, children }) {
                 'Loading'
               ) : session?.user ? (
                 <Menu as="div" className="relative inline-block">
-                  <Menu.Button className="text-black-600">
+                  <Menu.Button className="text-orange-600">
                     {session.user.name}
                   </Menu.Button>
                   <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white shadow-lg">
@@ -71,7 +71,7 @@ export default function Layout({ title, children }) {
                         Order History
                       </DropdownLink>
                     </Menu.Item>
-                    <Menu.item>
+                    <Menu.Item>
                       <a
                         className="dropdown-link"
                         href="#"
@@ -79,7 +79,7 @@ export default function Layout({ title, children }) {
                       >
                         Logout
                       </a>
-                    </Menu.item>
+                    </Menu.Item>
                   </Menu.Items>
                 </Menu>
               ) : (

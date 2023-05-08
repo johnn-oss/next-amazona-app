@@ -12,7 +12,7 @@ const data = {
       name: 'Tonia',
       email: 'johnalphonsus39@gmail.com',
       password: bcrypt.hashSync('123456'),
-      isAdmin: false,
+      isAdmin: true,
     },
   ],
   products: [
