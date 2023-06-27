@@ -1,6 +1,6 @@
-import mongoose, { connection } from 'mongoose';
+import mongoose from 'mongoose';
 
-const conection = {};
+const connection = {};
 
 async function connect() {
   if (connection.isConnected) {
