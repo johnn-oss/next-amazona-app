@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { signOut, useSession } from 'next-auth/react';
 import { Menu } from '@headlessui/react';
-import DropdownLink from './DropdownLink';
+// import DropdownLink from './DropdownLink';
 import Cookies from 'js-cookie';
 
 export default function Layout({ title, children }) {
@@ -20,9 +20,9 @@ export default function Layout({ title, children }) {
 
   const logoutClickhandler = () => {
     Cookies.remove(cart);
-    dispatch({type: 'CART_RESET'});
-    signOut({callbackUrl: '/login'});
-  }
+    dispatch({ type: 'CART_RESET' });
+    signOut({ callbackUrl: '/login' });
+  };
   return (
     <>
       <Head>
@@ -59,18 +59,26 @@ export default function Layout({ title, children }) {
                   </Menu.Button>
                   <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white shadow-lg">
                     <Menu.Item>
-                      <DropdownLink className="dropdown-link" href="/profile">
+                      <a className="dropdown-link" href="/profile">
                         Profile
-                      </DropdownLink>
+                        {/* <DropdownLink className="dropdown-link" href="/profile">
+                        </DropdownLink> */}
+                      </a>
                     </Menu.Item>
                     <Menu.Item>
-                      <DropdownLink
-                        className="dropdown-link"
-                        href="/order-history"
-                      >
+                      <a className="dropdown-link" href="/order-history">
                         Order History
-                      </DropdownLink>
+                      </a>
+                      {/* <DropdownLink></DropdownLink> */}
                     </Menu.Item>
+                    {session.user.isAdmin && (
+                      <Menu.Item>
+                        <a className="dropdown-link" href="/admin/dashboard">
+                          Admin Dashboard
+                        </a>
+                        {/* <DropdownLink></DropdownLink> */}
+                      </Menu.Item>
+                    )}
                     <Menu.Item>
                       <a
                         className="dropdown-link"
